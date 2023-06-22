@@ -1,0 +1,39 @@
+.navbar-container {
+  width: 100vw;
+  height: 60px;
+  background-color: rgb(192, 192, 192);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 4;
+}
+.link-box {
+  width: 50vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-btn {
+  width: fit-content;
+  height: fit-content;
+  padding: 5px 10px;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  font-family: "Raleway", sans-serif;
+  background-color: rgba(0, 0, 0, 0);
+  transition: all 0.2s ease;
+}
+
+.nav-btn:hover {
+  color: rgb(166, 0, 255);
+  background-color: rgba(0, 0, 0, 0.099);
+}
+
+@media screen and (max-width: 500px) {
+  .link-box {
+    width: 100vw;
+  }
+}

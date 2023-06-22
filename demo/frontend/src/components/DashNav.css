@@ -1,0 +1,62 @@
+.dashnav-container {
+  width: 100vw;
+  height: 40px;
+  background-color: rgba(178, 142, 246, 0.801);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 60px;
+  z-index: 3;
+  animation: open-dash-nav 0.4s;
+}
+.dash-link-box {
+  width: 40vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dash-nav-btn {
+  width: fit-content;
+  height: fit-content;
+  padding: 5px 10px;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  margin: 0 5px;
+  cursor: pointer;
+  font-family: "Raleway", sans-serif;
+  background-color: rgba(0, 0, 0, 0);
+  transition: all 0.2s ease;
+}
+
+.dash-nav-btn:hover {
+  color: rgb(0, 0, 0);
+  background-color: rgba(193, 193, 193, 0.274);
+}
+
+@keyframes open-dash-nav {
+  from {
+    transform: translateY(-60px);
+  }
+  to {
+    transform: translateY(0px);
+  }
+}
+
+@media screen and (max-width: 1050px) {
+  .dash-link-box {
+    width: 80vw;
+  }
+}
+@media screen and (max-width: 500px) {
+  .dashnav-container {
+    height: 50px;
+  }
+  .dash-link-box {
+    width: 100vw;
+  }
+  .dash-nav-btn {
+    font-size: 1rem;
+  }
+}
