@@ -21,8 +21,8 @@ export default function Item4() {
           Open modal
         </button>
         {openModal && (
-          <ModalWrapper setToggleModal={setOpenModal}>
-            <BasicModal setToggleModal={setOpenModal} btnAction={myAction} />
+          <ModalWrapper closeModal={setOpenModal}>
+            <BasicModal closeModal={setOpenModal} actionButton={myAction} />
           </ModalWrapper>
         )}
       </div>

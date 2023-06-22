@@ -2,9 +2,9 @@ import PropTypes from "prop-types";
 import styles from "./ModalWrapper.module.css";
 import Close from "./close.png";
 
-export default function ModalWrapper({ children, setToggleModal }) {
+export default function ModalWrapper({ children, closeModal }) {
   const handleModalClose = () => {
-    setToggleModal(false);
+    closeModal(false);
   };
 
   return (
@@ -24,5 +24,5 @@ export default function ModalWrapper({ children, setToggleModal }) {
 }
 ModalWrapper.propTypes = {
   children: PropTypes.node.isRequired,
-  setToggleModal: PropTypes.func.isRequired,
+  closeModal: PropTypes.func.isRequired,
 };

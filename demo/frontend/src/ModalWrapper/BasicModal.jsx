@@ -1,13 +1,13 @@
 import PropTypes from "prop-types";
 import styles from "./BasicModal.module.css";
 
-export default function BasicModal({ setToggleModal, btnAction }) {
+export default function BasicModal({ closeModal, actionButton }) {
   const handleModalClose = () => {
-    setToggleModal(false);
+    closeModal(false);
   };
   const handleAction = () => {
-    btnAction();
-    setToggleModal(false);
+    actionButton();
+    closeModal(false);
   };
 
   return (
@@ -34,6 +34,6 @@ export default function BasicModal({ setToggleModal, btnAction }) {
 }
 
 BasicModal.propTypes = {
-  setToggleModal: PropTypes.func.isRequired,
-  btnAction: PropTypes.func.isRequired,
+  closeModal: PropTypes.func.isRequired,
+  actionButton: PropTypes.func.isRequired,
 };

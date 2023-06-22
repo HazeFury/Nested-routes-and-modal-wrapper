@@ -7,7 +7,7 @@
   align-items: center;
   position: fixed;
   top: 60px;
-  z-index: 3;
+  z-index: 11;
   animation: open-dash-nav 0.4s;
 }
 .dash-link-box {
