@@ -2,7 +2,7 @@
 
 # Concept
 
-This workshop shows how nested routes works. I also created my own concept of modal wrapper for React ! 
+This workshop shows how nested routes works. I also created my own concept of modal wrapper for React and I share it with you ! 
 
 # Wrapper Modal
 ## Setup & Use
@@ -11,9 +11,10 @@ If you want to customize everything by yourself, you can copy/paste the code fro
 
 ## Import
 
-Start to import the component from the folder. For example :
+Start to import the component from the folder in the page in which you want tu use the modal. Don't forget to import useState too.
 
 ```
+import { useState } from "react";
 import ModalWrapper from "../../ModalWrapper/ModalWrapper";
 import BasicModal from "../../ModalWrapper/BasicModal";
 ```
@@ -42,30 +43,52 @@ So, here is the idea:
             <BasicModal />
 </ModalWrapper>
 ```
-### Props
+## Props
 - The last thing you should understand is the use of props to make your modal works well.
-If you are using the BasicModal component, you should have at least 3 Props in your component : 2 for closing your modal and 1 to execute an action (when you click on "Yes" button) :
+If you are using the BasicModal component, you should have at least 2 Props in your component : 1 for closing your modal in ModalWrapper component and 1 in the BasicModal.
+You can add a few more props, here is the complete list :
 
+### in ModalWrapper
+
+- **closeModal** : (_Hook_) is needed to close the modal. You just have to give the value to change the state of your useState (the state that open your modal)
+- **isCloseBtn** : (_boolean_) is needed to select if you want the close button on the top-right corner of the modal. set to true or false according to your needs.
+
+### in BasicModal
+
+- **closeModal** : (_Hook_) is needed to close the modal. You just have to give the value to change the state of your useState (the same you passed in ModalWrapper)
+- **modalText** : (_string_) whrite the message you want to see appear in your modal
+- **actionNoButton** : (_function_) give the function that you want to execute when clicking on the "no" button. If you don't have any function to give, you can give an empty function or remove the props if you are sure, you will never use it in your project.
+- **actionYesButton** : (_function_) give the function that you want to execute when clicking on the "yes" button. If you don't have any function to give, you can give an empty function or remove the props if you are sure, you will never use it in your project.
+
+So, it should look like this :
 ```
-<ModalWrapper closeModal={setOpenModal}>
-            <BasicModal closeModal={setOpenModal} actionButton={myAction} />
-</ModalWrapper>
+<ModalWrapper closeModal={setOpenMyModal} isCloseBtn>
+            <BasicModal
+              closeModal={setOpenMyModal}
+              actionNoButton={emptyFunction}
+              actionYesButton={myFunction}
+            />
+          </ModalWrapper>
 ```
 
 - Finally, don't forget that you need to render your modal only when you click on a button or whatever.
 So, you may use the logical AND (&&) to make this works.
 
 ```
-{openModal && (
-          <ModalWrapper closeModal={setOpenModal}>
-            <BasicModal closeModal={setOpenModal} actionButton={myAction} />
+{openMyModal && (
+          <ModalWrapper closeModal={setOpenMyModal} isCloseBtn>
+            <BasicModal
+              closeModal={setOpenMyModal}
+              actionNoButton={emptyFunction}
+              actionYesButton={myFunction}
+            />
           </ModalWrapper>
         )}
 ```
 
-_NB : `You can place the ModalWrapper anywhere you want in you XML. Thanks to the CSS properties, it does not matter.`_
+_NB : `You can place the ModalWrapper anywhere you want in you XML. Thanks to the CSS properties, it will always fits well in your project.`_
 
-_`The modal will be above all your elements but if you want some of your components (Navbar or header for example) to not being hidden by the blur effect, you should give them a z-index > 10 in yout CSS properties `_
+_`In terms of index, the modal will be above all your elements but if you want some of your components (Navbar or header for example) to not being hidden by the blur effect, you should give them a z-index > 10 in yout CSS properties `_
 
 
 # Result
@@ -77,31 +100,38 @@ import "../../App.css";
 import ModalWrapper from "../../ModalWrapper/ModalWrapper";
 import BasicModal from "../../ModalWrapper/BasicModal";
 
-export default function Item4() {
-  const [openModal, setOpenModal] = useState(false);
+export default function Item2() {
+  const [openMyModal, setOpenMyModal] = useState(false);
 
-  const handleToggle = () => {
-    setOpenModal(!openModal);
+  const handleOpen = () => {
+    setOpenMyModal(true);
   };
 
-  const myAction = () => {
-    console.info("toto");
+  const emptyFunction = () => {};
+
+  const myFunction = () => {
+    console.info("this is modal wrapper");
   };
+
   return (
-    <div className="item-class">
-      <div className="this-page fourth-item-page">
-        <h1>Item 4</h1>
-        <button type="button" className="btn-open-modal" onClick={handleToggle}>
-          Open modal
-        </button>
-        {openModal && (
-          <ModalWrapper closeModal={setOpenModal}>
-            <BasicModal closeModal={setOpenModal} actionButton={myAction} />
-          </ModalWrapper>
-        )}
-      </div>
+    <div>
+      <button type="button" onClick={handleOpen}>
+        Open modal
+      </button>
+      {openMyModal && (
+        <ModalWrapper closeModal={setOpenMyModal} isCloseBtn>
+          <BasicModal
+            closeModal={setOpenMyModal}
+            actionNoButton={emptyFunction}
+            actionYesButton={myFunction}
+          />
+        </ModalWrapper>
+      )}
     </div>
   );
 }
 
+
 ```
+
+## `Enjoy =)`

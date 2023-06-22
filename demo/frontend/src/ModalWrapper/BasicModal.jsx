@@ -1,18 +1,24 @@
 import PropTypes from "prop-types";
 import styles from "./BasicModal.module.css";
 
-export default function BasicModal({ closeModal, actionButton }) {
+export default function BasicModal({
+  closeModal,
+  modalText,
+  actionNoButton,
+  actionYesButton,
+}) {
   const handleModalClose = () => {
     closeModal(false);
+    actionNoButton();
   };
   const handleAction = () => {
-    actionButton();
     closeModal(false);
+    actionYesButton();
   };
 
   return (
     <div className={styles.basic_modal_container}>
-      <p className={styles.modal_text}>Are you sure ?</p>
+      <p className={styles.modal_text}>{modalText}</p>
       <div className={styles.btn_modal_box}>
         <button
           type="button"
@@ -35,5 +41,7 @@ export default function BasicModal({ closeModal, actionButton }) {
 
 BasicModal.propTypes = {
   closeModal: PropTypes.func.isRequired,
-  actionButton: PropTypes.func.isRequired,
+  modalText: PropTypes.string.isRequired,
+  actionNoButton: PropTypes.func.isRequired,
+  actionYesButton: PropTypes.func.isRequired,
 };

@@ -37,6 +37,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 h1 {
@@ -72,7 +73,7 @@ h1 {
 .fourth-item-page {
   background-color: rgba(69, 78, 255, 0.5);
   box-shadow: 0 0 150px 0px rgba(69, 78, 255, 0.5);
-  flex-direction: column;
+
 }
 
 .btn-open-modal {
