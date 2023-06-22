@@ -4,7 +4,8 @@
 
 This workshop shows how nested routes works. I also created my own concept of modal wrapper for React ! 
 
-# Setup & Use
+# Wrapper Modal
+## Setup & Use
 
 If you want to customize everything by yourself, you can copy/paste the code from /ModalWrapper folder or you can download it and put it in your project folder. I recommand to place it close to your root folder because it is meant to be used anywhere in your project and not only in one page.
 
@@ -64,7 +65,7 @@ So, you may use the logical AND (&&) to make this works.
 
 _NB : `You can place the ModalWrapper anywhere you want in you XML. Thanks to the CSS properties, it does not matter.`_
 
-_`The modal will above all your element but if you want some of your components (Navbar of header for example) to not being hide by the blur effect, you should give to your elements a z-index > 10 in yout CSS properties `_
+_`The modal will be above all your elements but if you want some of your components (Navbar or header for example) to not being hidden by the blur effect, you should give them a z-index > 10 in yout CSS properties `_
 
 
 # Result

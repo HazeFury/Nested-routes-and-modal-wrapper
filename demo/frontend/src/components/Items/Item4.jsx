@@ -7,11 +7,14 @@ export default function Item4() {
   const [openModal, setOpenModal] = useState(false);
 
   const handleToggle = () => {
-    setOpenModal(!openModal);
+    setOpenModal(true);
   };
 
+  const [id, setId] = useState(0);
+
   const myAction = () => {
-    console.info("toto");
+    setId(id + 1);
+    console.info(id);
   };
   return (
     <div className="item-class">
